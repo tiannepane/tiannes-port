@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
-  { label: 'Resume', to: 'https://docs.google.com/document/d/1CjR82L8YtHnrzTxSwOMHau0b9mnTRYxfVPzMmqRWcSY/edit?usp=sharing', external: true },
+  { label: 'Resume', to: 'https://drive.google.com/file/d/1_Da6cyIZi5J69f-koRUteFbrlMaQgeXN/view?usp=sharing', external: true },
 ]
 
 export default function Header() {
