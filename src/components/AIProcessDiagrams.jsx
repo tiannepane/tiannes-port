@@ -443,7 +443,7 @@ export default function AIProcessDiagrams() {
       {/* Main area */}
       <div
         className="flex rounded-xl border border-[#C9A84C]/30 bg-white"
-        style={{ minHeight: '80vh', overflow: 'hidden', alignItems: 'flex-start' }}
+        style={{ minHeight: '80vh', alignItems: 'flex-start' }}
         onClick={() => { if (!nodeJustClicked.current) setSelectedNode(null) }}
       >
         {/* Diagram — scrolls normally */}
@@ -469,15 +469,16 @@ export default function AIProcessDiagrams() {
             transition: 'width 0.2s ease',
             borderLeft: story ? '1px solid rgba(201,168,76,0.25)' : 'none',
             overflow: 'hidden',
+            position: 'sticky',
+            top: '1rem',
+            alignSelf: 'flex-start',
+            maxHeight: '90vh',
           }}
         >
           <div
             style={{
-              position: 'sticky',
-              top: '1rem',
-              height: 'fit-content',
-              maxHeight: '90vh',
               overflowY: 'auto',
+              maxHeight: '90vh',
               width: '100%',
               padding: '28px',
               boxSizing: 'border-box',
