@@ -129,6 +129,16 @@ export default function HomePage() {
             >
               View →
             </a>
+
+            <span style={infoLabel}>LinkedIn</span>
+            <a
+              href="https://www.linkedin.com/in/tiannepane"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.82rem', color: '#C9A84C', textDecoration: 'none', lineHeight: 1.8 }}
+            >
+              Connect →
+            </a>
           </div>
         </div>
 
