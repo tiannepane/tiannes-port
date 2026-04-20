@@ -104,30 +104,6 @@ body {
   transform: scaleX(1);
 }
 
-/* AboutPage */
-.about-back-link {
-  transition: opacity 0.2s ease;
-}
-.about-back-link:hover {
-  opacity: 0.65;
-}
-
-.about-social-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #C9A84C;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.22s ease;
-}
-.about-social-link:hover::after {
-  transform: scaleX(1);
-}
-
 /* HomePage fade-in text animations */
 .homepage-line-1 {
   opacity: 0;

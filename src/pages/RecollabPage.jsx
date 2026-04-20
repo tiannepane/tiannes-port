@@ -29,45 +29,6 @@ const sectionH = {
 // Helpers
 // ---------------------------------------------------------------------------
 
-function Card({ title, body: bodyText }) {
-  return (
-    <div
-      style={{
-        background: '#ffffff',
-        borderLeft: '3px solid #C9A84C',
-        borderRadius: '8px',
-        padding: '24px',
-        marginBottom: '16px',
-        boxShadow: '0 2px 12px rgba(44,44,44,0.05)',
-      }}
-    >
-      <div
-        style={{
-          fontFamily: 'DM Sans, sans-serif',
-          fontSize: '17px',
-          fontWeight: 500,
-          color: '#2C2C2C',
-          marginBottom: '8px',
-          lineHeight: 1.4,
-        }}
-      >
-        {title}
-      </div>
-      <div
-        style={{
-          fontFamily: 'DM Sans, sans-serif',
-          fontSize: '17px',
-          color: '#2C2C2C',
-          lineHeight: 1.9,
-          opacity: 0.75,
-        }}
-      >
-        {bodyText}
-      </div>
-    </div>
-  )
-}
-
 function GoldButton({ href, children }) {
   const [hov, setHov] = useState(false)
   return (
@@ -132,9 +93,6 @@ export default function RecollabPage() {
           textAlign: 'center',
         }}
       >
-        <div style={{ fontSize: '3.8rem', lineHeight: 1, marginBottom: '20px' }}>
-          🏢
-        </div>
         <h1
           style={{
             fontFamily: 'Cormorant Garamond, serif',
@@ -176,81 +134,56 @@ export default function RecollabPage() {
       {/* Content */}
       <div style={{ maxWidth: '680px', margin: '0 auto', padding: '0 24px 120px' }}>
 
-        {/* ── Section 1 ────────────────────────────────────────────── */}
-        <p
-          style={{
-            fontFamily: 'Cormorant Garamond, serif',
-            fontStyle: 'normal',
-            fontSize: '24px',
-            fontWeight: 400,
-            color: '#2C2C2C',
-            lineHeight: 1.45,
-            margin: '0 0 28px',
-          }}
-        >
-          i'm the product manager at recollab, and honestly it's one of the
-          most exciting things i'm working on right now.
-        </p>
+        {/* ── The Problem ──────────────────────────────────────────── */}
+        <h2 style={{ ...sectionH, marginTop: 0 }}>The Problem</h2>
 
         <p style={body}>
-          recollab is building the financial operating system for property
-          managers. the problem it solves is really specific but really big:
-          most buildings in north america are managed using static PDFs and
-          outdated reserve fund studies that tell you 'here's what's going to
-          break in 20 years' with zero real-time intelligence, zero scenario
-          planning, and zero connection to the people who actually need to act
-          on that information. boards, insurers, contractors, lenders.
-        </p>
-        <p style={body}>
-          recollab changes that. you drag and drop any file format, the ai
-          ingests it, maps it to the specific building component it belongs to,
-          and suddenly you have a living financial model instead of a dusty PDF.
+          Most buildings in North America are managed using static PDFs and
+          reserve fund studies that tell you what will break in 20 years with
+          no real-time intelligence, no scenario planning, and no connection to
+          the people who need to act on it.
         </p>
 
-        {/* ── Section 2 ────────────────────────────────────────────── */}
-        <h2 style={sectionH}>what it actually does</h2>
-
-        <Card
-          title="validates data integrity"
-          body="catches errors and inconsistencies before they become expensive problems."
-        />
-        <Card
-          title="runs automated risk audits"
-          body="real-time intelligence on what needs attention now, not in 20 years."
-        />
-        <Card
-          title="generates reserve studies"
-          body="living financial models that update as your building data changes."
-        />
-        <Card
-          title="matches you with verified contractors"
-          body="connects the right people to the right problems at the right time."
-        />
-        <Card
-          title="helps negotiate better insurance rates"
-          body="uses your own maintenance records as leverage to get better deals."
-        />
-
-        {/* ── Section 3 ────────────────────────────────────────────── */}
-        <h2 style={sectionH}>my role</h2>
+        {/* ── The Solution ─────────────────────────────────────────── */}
+        <h2 style={sectionH}>The Solution</h2>
 
         <p style={body}>
-          my role is product and UX strategy. basically turning what the
-          engineers and ml team are building into something that actually makes
-          sense for a property manager sitting at their desk trying to figure
-          out how to tell their board they need to raise fees.
-        </p>
-        <p style={body}>
-          that means talking to users constantly, mapping flows, pressure
-          testing assumptions, and making sure what we ship is something a real
-          person can actually use without a manual.
+          Recollab is building the financial operating system for property
+          managers. Drag and drop any file format, the AI ingests it, maps it
+          to the specific building component it belongs to, and you get a
+          living financial model instead of a dusty PDF. It validates data
+          integrity, runs automated risk audits, generates reserve studies,
+          matches buildings with verified contractors, and helps negotiate
+          better insurance rates using your own maintenance records as leverage.
         </p>
 
-        {/* ── Section 4 — Demo ─────────────────────────────────────── */}
-        <h2 style={sectionH}>see it in action</h2>
+        {/* ── My Role ──────────────────────────────────────────────── */}
+        <h2 style={sectionH}>My Role</h2>
+
+        <p style={body}>
+          I am the product manager. That means talking to users constantly,
+          mapping flows, pressure testing assumptions, and making sure what we
+          ship makes sense for a property manager trying to explain to their
+          board why fees need to go up. Turning what the engineering and ML
+          team builds into something a real person can use without a manual.
+        </p>
+        <p style={body}>
+          I work AI-native across the entire product cycle. I use Perplexity to
+          pull live industry benchmarks and competitor signals, Claude to
+          synthesize research and draft specs, and Claude Code to prototype and
+          ship. Working this closely with our own product is also what led me to
+          build Intelkin, a tool I created after experiencing designer's
+          blindness firsthand while building our investor demo. We had been
+          staring at the same screens for so long we stopped seeing the actual
+          problems. Intelkin uses neuroscience to catch that kind of friction
+          before it reaches users.
+        </p>
+
+        {/* ── Where It Is Now — Demo ───────────────────────────────── */}
+        <h2 style={sectionH}>Where It Is Now</h2>
 
         <p style={{ ...body, marginBottom: '24px' }}>
-          this is our investor demo. have a look around.
+          Live and in use. Come see it.
         </p>
 
         <div
@@ -272,7 +205,7 @@ export default function RecollabPage() {
         </div>
         <GoldButton href={DEMO_URL}>open full demo →</GoldButton>
 
-        {/* ── Section 5 — Raising callout ──────────────────────────── */}
+        {/* ── Callout ──────────────────────────────────────────────── */}
         <div
           style={{
             border: '2px solid rgba(201, 168, 76, 0.8)',
@@ -306,7 +239,7 @@ export default function RecollabPage() {
               lineHeight: 1.2,
             }}
           >
-            want to get your finger in the pie?
+            interested in proptech and AI?
           </h2>
           <p
             style={{
@@ -317,9 +250,8 @@ export default function RecollabPage() {
               margin: '0 0 28px',
             }}
           >
-            we are currently raising!! if you or someone you know is interested
-            in what we're building in proptech + AI, we would genuinely love to
-            talk. get in touch :)
+            If you or someone you know is interested in proptech and AI, we
+            would love to talk.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <GoldButton href="mailto:nadykupane@gmail.com">get in touch →</GoldButton>

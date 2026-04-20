@@ -167,83 +167,18 @@ function DemoHeroLink() {
 }
 
 // ---------------------------------------------------------------------------
-// Section: Context
+// Section: The Problem
 // ---------------------------------------------------------------------------
 
-function ContextContent() {
+function TheProblemContent() {
   const [lightbox, setLightbox] = useState(null)
   return (
     <div>
-      <h3 style={{ ...subH, marginTop: 0 }}>why i built it</h3>
-
       <p style={body}>
-        i'm a product manager at recollab, and right now we're in the middle
-        of fundraising. so we were building an investor demo with just three of
-        us: me, my cto, and my ceo. figuring out what looks good, what feels
-        like friction, what needs more context. and honestly? we were too close
-        to it. we'd been staring at the same screens for so long that our
-        brains just started auto-completing the gaps. we stopped seeing the
-        actual problems.
-      </p>
-      <p style={body}>
-        there was this one page, a financial analytics page, that made complete
-        sense to us. but when we actually broke it down, there were things that
-        were hallucinated from the vibe coding that none of us had caught. we'd
-        seen it so many times we just skipped over it. designer's blindness is
-        real!!
-      </p>
-      <p style={body}>
-        and that got me thinking about churn. every saas company has a churn
-        problem. and most of the tools that exist right now, like churnkey,
-        look at what has ALREADY happened and try to establish patterns from
-        there. but what if you could go more upstream? what if you could catch
-        the friction before it ever reaches your users, while you're still in
-        the design phase?
-      </p>
-      <p style={{ ...body, marginBottom: '40px' }}>that's why i built intelkin.</p>
-
-      <h3 style={subH}>what intelkin actually does</h3>
-
-      <p style={body}>
-        intelkin uses meta's tribe v2, an open source model trained on 752
-        brain scans, to predict how the brain reacts to complex stimuli. it's
-        multimodal so it can process text, video, and audio, which means you
-        can feed it almost anything a designer would actually be working with.
-      </p>
-      <p style={body}>
-        the way it works is simple: you upload two designs. intelkin runs each
-        one through tribe v2 separately and then compares the neural outputs
-        side by side. what tribe v2 generates is an fMRI-level read on which
-        brain regions are being activated. and what intelkin does with that is
-        translate it into something a product manager can actually USE:
-      </p>
-
-      {/* Gold callout block */}
-      <div style={goldCallout}>
-        "this design is triggering the decision-making region too hard. there's
-        too much cognitive load here. users are going to feel confused and fall
-        off."
-      </div>
-
-      <p style={body}>
-        so instead of just saying "design b has less friction," you can say
-        WHY. because the neural activity tells you which cognitive functions
-        are being overloaded and where exactly in the flow it's happening.
-        that's a fundamentally different level of reasoning than inferring from
-        user behavior alone.
-      </p>
-      <p style={body}>
-        right now, intelkin is a prototype. the interface shows you the
-        workflow and what the outputs would look like. the next step is
-        automating the interpretation layer using claude vision so that mapping
-        brain regions to design problems doesn't have to be done manually. i
-        also want to eventually feed both designs in simultaneously so tribe v2
-        can do the comparison directly rather than running them independently.
-        both of those are on the roadmap!!
-      </p>
-      <p style={{ ...body, marginBottom: '32px' }}>
-        i dog-fooded it on the recollab investor demo. and yes, it flagged
-        things we had completely missed.
+        Every SaaS company has a churn problem. Most tools that exist today
+        look at what has already happened and try to establish patterns from
+        there. But by the time behavior tells you something is wrong, you have
+        already lost the user.
       </p>
 
       {/* Single screenshot */}
@@ -327,40 +262,23 @@ function ContextContent() {
 }
 
 // ---------------------------------------------------------------------------
-// Section: Demo
+// Section: The Solution
 // ---------------------------------------------------------------------------
 
-function DemoContent() {
+function TheSolutionContent() {
   return (
     <div>
-      <h3 style={{ ...subH, marginTop: 0 }}>see it in action</h3>
-      <p style={{ ...body, marginBottom: '24px' }}>
-        this is intelkin running live. have a look around.
+      <p style={body}>
+        What if you could catch friction before it ever reaches your users,
+        while you are still in the design phase? Intelkin uses neuroscience to
+        predict how the brain responds to a design before anyone sees it.
       </p>
-      <div
-        style={{
-          borderRadius: '16px',
-          border: '1px solid #C9A84C',
-          overflow: 'hidden',
-          marginBottom: '24px',
-        }}
-      >
-        <iframe
-          src={DEMO_URL}
-          title="Intelkin Demo"
-          width="100%"
-          height="650"
-          style={{ display: 'block', border: 'none' }}
-          allow="fullscreen"
-        />
-      </div>
-      <GoldButton href={DEMO_URL}>open full demo →</GoldButton>
     </div>
   )
 }
 
 // ---------------------------------------------------------------------------
-// Section: Tech
+// Section: How It Works
 // ---------------------------------------------------------------------------
 
 const TECH_CARDS = [
@@ -369,16 +287,30 @@ const TECH_CARDS = [
   { name: 'next.js + react', desc: 'frontend framework'                                  },
 ]
 
-function TechContent() {
+function HowItWorksContent() {
   return (
     <div>
-      <h3 style={{ ...subH, marginTop: 0 }}>the stack</h3>
+      <p style={body}>
+        Intelkin runs your designs through Tribe V2, Meta's open source model
+        trained on 752 brain scans, and generates an fMRI-level read on which
+        cognitive regions are being activated. Upload two versions of a design
+        and instead of "version B has less friction" you get why. Which brain
+        regions are being overloaded and exactly where in the flow it is
+        happening.
+      </p>
+
+      <div style={goldCallout}>
+        "this design is triggering the decision-making region too hard. there's
+        too much cognitive load here. users are going to feel confused and fall
+        off."
+      </div>
+
       <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '16px',
-          marginBottom: '32px',
+          margin: '32px 0',
         }}
       >
         {TECH_CARDS.map((card) => (
@@ -428,57 +360,39 @@ function TechContent() {
 }
 
 // ---------------------------------------------------------------------------
-// Section: The Code
+// Section: Where It Is Now
 // ---------------------------------------------------------------------------
 
-function CodeContent() {
-  return (
-    <div style={{ textAlign: 'center', padding: '60px 0' }}>
-      <h3 style={{ ...subH, marginTop: 0, textAlign: 'center' }}>the code</h3>
-      <p
-        style={{
-          fontFamily: 'DM Sans, sans-serif',
-          fontSize: '17px',
-          color: '#2C2C2C',
-          opacity: 0.5,
-          lineHeight: 1.9,
-          margin: 0,
-        }}
-      >
-        the code for intelkin isn't public yet. but it's coming. watch this
-        space.
-      </p>
-    </div>
-  )
-}
-
-// ---------------------------------------------------------------------------
-// Section: Thoughts
-// ---------------------------------------------------------------------------
-
-function ThoughtsContent() {
+function WhereItIsNowContent() {
   return (
     <div>
-      <h3 style={{ ...subH, marginTop: 0 }}>what i learned building this</h3>
-      <p style={body}>
-        i learned that there's a version of product feedback that goes deeper
-        than behavior. behavior tells you what happened. neural activity tells
-        you WHY it happened. and that distinction matters a lot when you're
-        designing for complex products where your users aren't a general
-        demographic. they're specific people making specific decisions, and the
-        stakes of getting it wrong are high.
+      <p style={{ ...body, marginBottom: '24px' }}>
+        Still a prototype. I built it because I was too close to our own
+        investor demo at Recollab and needed something that could see what I
+        could not. I dog-fooded it on the demo and it flagged things we had
+        completely missed. Next step is automating the interpretation layer
+        with Claude Vision so the brain region mapping does not have to be
+        done manually.
       </p>
-      <p style={body}>
-        i also learned something more personal: building a tool to solve your
-        own problem is the fastest way to understand what it actually needs to
-        do. i wasn't hypothesizing about designer's blindness. i was living it.
-        and that made every product decision a lot clearer.
-      </p>
-      <p style={{ ...body, marginBottom: '40px' }}>
-        intelkin is still early and i'm being honest about that! but i want to
-        get it in front of other designers and product teams soon. if that's
-        you, i'd love to hear what you think :)
-      </p>
+
+      <div
+        style={{
+          borderRadius: '16px',
+          border: '1px solid #C9A84C',
+          overflow: 'hidden',
+          marginBottom: '24px',
+        }}
+      >
+        <iframe
+          src={DEMO_URL}
+          title="Intelkin Demo"
+          width="100%"
+          height="650"
+          style={{ display: 'block', border: 'none' }}
+          allow="fullscreen"
+        />
+      </div>
+      <GoldButton href={DEMO_URL}>open full demo →</GoldButton>
 
       {/* Callout card */}
       <div
@@ -488,6 +402,7 @@ function ThoughtsContent() {
           background: 'rgba(201, 168, 76, 0.06)',
           padding: '32px',
           textAlign: 'center',
+          marginTop: '40px',
         }}
       >
         <p
@@ -499,7 +414,7 @@ function ThoughtsContent() {
             margin: '0 0 16px',
           }}
         >
-          want to try it or share feedback? i'd love to hear from you. 🧠
+          want to try it or share feedback? i'd love to hear from you.
         </p>
         <GoldLink href="#">get in touch →</GoldLink>
       </div>
@@ -512,17 +427,16 @@ function ThoughtsContent() {
 // ---------------------------------------------------------------------------
 
 const SECTIONS = [
-  { name: 'Context',  content: <ContextContent />  },
-  { name: 'Demo',     content: <DemoContent />     },
-  { name: 'Tech',     content: <TechContent />     },
-  { name: 'The Code', content: <CodeContent />     },
-  { name: 'Thoughts', content: <ThoughtsContent /> },
+  { name: 'The Problem',    content: <TheProblemContent />    },
+  { name: 'The Solution',   content: <TheSolutionContent />   },
+  { name: 'How It Works',   content: <HowItWorksContent />    },
+  { name: 'Where It Is Now', content: <WhereItIsNowContent /> },
 ]
 
 export default function IntelkinPage() {
   return (
     <ProjectPage
-      icon="🧠"
+      icon=""
       title="Intelkin"
       tagline="neural activity behind churn"
       tag="neuroscience / AI"
