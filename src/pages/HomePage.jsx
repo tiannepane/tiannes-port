@@ -95,12 +95,13 @@ function BottomNav() {
 function AboutSection() {
   const [expanded, setExpanded] = useState(false)
   const photoRef = useRef(null)
+  const [photoVisible, setPhotoVisible] = useState(false)
 
   useEffect(() => {
     const el = photoRef.current
     if (!el) return
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'translateY(0)' } },
+      ([entry]) => { if (entry.isIntersecting) { setPhotoVisible(true); obs.disconnect() } },
       { threshold: 0.2 }
     )
     obs.observe(el)
@@ -109,116 +110,115 @@ function AboutSection() {
 
   return (
     <section
+      id="about"
       style={{
-        position: 'relative', overflow: 'hidden',
-        background: '#050A0F', padding: '120px 24px 100px',
+        width: '100%', position: 'relative', overflow: 'hidden',
+        padding: 'clamp(96px, 14vw, 144px) 0', background: '#000',
       }}
     >
       <StarsBackground factor={0.05} speed={50} color="#ffffff" />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 80%)', zIndex: 1, pointerEvents: 'none' }} />
 
-      {/* radial vignette */}
-      <div style={{
-        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse at center, transparent 40%, #050A0F 80%)',
-      }} />
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: '680px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
 
-      <div style={{ position: 'relative', zIndex: 2, maxWidth: '1024px', margin: '0 auto' }}>
-
-        <Reveal delay={0.05}>
-          <span className="mono" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-            About
-          </span>
+        <Reveal delay={0.1} className="mono" style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '24px' }}>
+          About
         </Reveal>
 
-        <Reveal delay={0.1} as="h2" style={{ margin: '16px 0 48px', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-          Built <span className="serif" style={{ fontStyle: 'italic' }}>different.</span>
+        <Reveal delay={0.2} as="h2" style={{
+          fontSize: 'clamp(32px, 5vw, 48px)', lineHeight: 1.15, letterSpacing: '-0.025em',
+          margin: 0, marginBottom: '40px', color: 'white', fontWeight: 500,
+        }}>
+          Built <span className="serif">different</span>.
         </Reveal>
 
-        <div style={{ display: 'flex', gap: '60px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-
-          {/* Photo */}
-          <div style={{ flexShrink: 0 }}>
-            <div
-              ref={photoRef}
-              className="liquid-glass"
-              style={{
-                borderRadius: '20px', overflow: 'hidden', width: '260px',
-                opacity: 0, transform: 'translateY(24px)',
-                transition: 'opacity 0.8s ease, transform 0.8s ease',
-              }}
-            >
-              <img
-                src="/assets/about-photo.png"
-                alt="Tianne Pane"
-                style={{ width: '100%', display: 'block', objectFit: 'cover' }}
-              />
-              <div style={{ padding: '12px 16px' }}>
-                <span className="mono" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em' }}>
-                  Lovable Event with Airess, Toronto 2026
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Bio */}
-          <div style={{ flex: 1, minWidth: '280px' }}>
-            <Reveal delay={0.15}>
-              <p style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 500, lineHeight: 1.3, margin: '0 0 24px', letterSpacing: '-0.02em' }}>
-                Hello, I'm Tianne.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 16px' }}>
-                Product Manager based out of Toronto. Born in Indonesia, raised in Qatar. Third culture kid who learned early that context shapes everything — and that the best products are the ones built for the edges, not the average.
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.25}>
-              <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 20px' }}>
-                I sit at the intersection of product strategy, AI, and design. I move fast, think in systems, and care deeply about the people on the other end of the screen.
-              </p>
-            </Reveal>
-
-            {expanded && (
-              <div style={{ overflow: 'hidden' }}>
-                <Reveal delay={0.05}>
-                  <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 16px' }}>
-                    I was the recipient of the Pearson Canada Scholarship — one of 20 students selected nationally for academic achievement and community leadership. I went on to study Business Technology Management at Toronto Metropolitan University.
-                  </p>
-                </Reveal>
-                <Reveal delay={0.1}>
-                  <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 16px' }}>
-                    Before going independent, I led product at{' '}
-                    <a href="https://kabriinnovations.com" target="_blank" rel="noreferrer" style={{ color: 'white', textDecoration: 'underline', textDecorationColor: 'rgba(255,255,255,0.3)' }}>
-                      Kabri Innovations
-                    </a>
-                    , where I shipped B2B SaaS products and learned how to navigate ambiguity with a small team and real stakes.
-                  </p>
-                </Reveal>
-                <Reveal delay={0.15}>
-                  <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 20px' }}>
-                    Outside of work: basketball, reading (currently deep in systems thinking), and building things that shouldn't exist yet. Looking for the right team to build with.
-                  </p>
-                </Reveal>
-              </div>
-            )}
-
-            <Reveal delay={0.3}>
-              <button
-                onClick={() => setExpanded(e => !e)}
-                style={{
-                  background: 'none', border: 'none', padding: 0, cursor: 'pointer',
-                  fontSize: '14px', color: 'rgba(255,255,255,0.5)',
-                  fontFamily: 'inherit', letterSpacing: '0.02em',
-                }}
-              >
-                {expanded ? 'Show less ↑' : 'Read more ↓'}
-              </button>
-            </Reveal>
-          </div>
-
+        {/* Photo */}
+        <div
+          ref={photoRef}
+          className="liquid-glass"
+          style={{
+            position: 'relative', width: '100%', borderRadius: '20px',
+            overflow: 'hidden', marginBottom: '40px',
+            maxHeight: '480px',
+            opacity: photoVisible ? 1 : 0,
+            transform: photoVisible ? 'scale(1) translateY(0)' : 'scale(0.97) translateY(24px)',
+            transition: 'opacity 1000ms ease-out, transform 1000ms ease-out',
+          }}
+        >
+          <img
+            src="/assets/about-photo.png"
+            alt="Tianne building with a team"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+          <div style={{
+            position: 'absolute', left: 0, right: 0, bottom: 0, height: '128px',
+            background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
+            pointerEvents: 'none',
+          }} />
+          <p className="mono" style={{
+            position: 'absolute', left: '16px', bottom: '16px', margin: 0,
+            fontSize: '11px', color: 'rgba(255,255,255,0.55)',
+            letterSpacing: '0.2em', textTransform: 'uppercase',
+          }}>
+            Lovable Event with Airess, Toronto 2026
+          </p>
         </div>
+
+        {/* Always-visible bio */}
+        <Reveal delay={0.3} style={{ display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'left', marginBottom: '24px' }}>
+          <p style={{
+            margin: 0, color: 'white',
+            fontSize: 'clamp(20px, 2.4vw, 24px)',
+            fontWeight: 500, lineHeight: 1.35, letterSpacing: '-0.01em',
+          }}>
+            Hello, I'm Tianne.
+          </p>
+          <p style={{ margin: 0, color: 'rgba(255,255,255,0.7)', fontSize: '16px', lineHeight: 1.7 }}>
+            Product Manager based out of Toronto. Born in Indonesia, raised in Qatar. Third culture kid, same chaos, different passport stamps.
+          </p>
+        </Reveal>
+
+        {/* Expandable bio */}
+        {expanded && (
+          <div className="animate-fade-in-up" style={{ display: 'flex', flexDirection: 'column', gap: '20px', color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.7, textAlign: 'left', marginBottom: '24px' }}>
+            <p style={{ margin: 0 }}>
+              I came to Toronto to study math at the University of Toronto. I beat the odds by being one of the 37 Lester B. Pearson scholars selected out of 10,000 applications. I have always loved problems in all their forms, the abstract ones on paper and the tangible ones in the world. Product is just where those two things met.
+            </p>
+            <p style={{ margin: 0 }}>
+              The problem I keep coming back to: venture capital is designed to be hard to understand, and founders pay the price. Investors have lawyers. Founders have enthusiasm. I have done 15+ interviews with founders about this gap. I am now part of the{' '}
+              <a
+                href="https://www.kabriinnovations.com/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: 'rgba(255,255,255,0.85)', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: '1px' }}
+              >Kabri Innovations</a>{' '}
+              accelerator to build a solution to it.
+            </p>
+            <p style={{ margin: 0 }}>
+              When I am not building: basketball on Sundays, art galleries, and too many books about how people think.
+            </p>
+            <p style={{ margin: 0, color: 'rgba(255,255,255,0.85)' }}>
+              Looking for the right team to build with.
+            </p>
+          </div>
+        )}
+
+        <button
+          onClick={() => setExpanded(e => !e)}
+          className="mono"
+          style={{
+            background: 'transparent', border: 'none',
+            color: 'rgba(255,255,255,0.4)', fontSize: '12px',
+            letterSpacing: '0.2em', textTransform: 'uppercase',
+            padding: '8px 0', marginBottom: '8px', cursor: 'pointer',
+            transition: 'color 200ms ease',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.color = 'white' }}
+          onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.4)' }}
+        >
+          {expanded ? 'Show less ↑' : 'Read more ↓'}
+        </button>
+
       </div>
     </section>
   )
