@@ -71,7 +71,7 @@ const STORIES = [
 
 // ── Diagram sources ────────────────────────────────────────────────────────
 
-const BASE = 'fill:#ffffff,stroke:#2C2C2C,color:#2C2C2C,font-size:13px'
+const BASE = 'fill:#151b2e,stroke:#2d3550,color:#e2e8f0,font-size:13px'
 const CHK  = 'fill:#C9A84C,stroke:#B8973A,color:#ffffff,font-size:13px,font-weight:600'
 
 const DIAGRAMS = [
@@ -310,11 +310,20 @@ async function getMermaid() {
     securityLevel: 'loose',
     themeVariables: {
       fontSize: '13px',
-      primaryColor: '#ffffff',
-      primaryBorderColor: '#2C2C2C',
-      primaryTextColor: '#2C2C2C',
-      lineColor: '#2C2C2C',
-      edgeLabelBackground: '#FAF3E0',
+      background: '#050A0F',
+      mainBkg: '#151b2e',
+      primaryColor: '#151b2e',
+      primaryBorderColor: '#2d3550',
+      primaryTextColor: '#e2e8f0',
+      lineColor: '#4a5568',
+      secondaryColor: '#1a2035',
+      tertiaryColor: '#0d1117',
+      edgeLabelBackground: '#050A0F',
+      clusterBkg: 'rgba(255,255,255,0.03)',
+      clusterBorder: '#2a2f4a',
+      titleColor: 'rgba(255,255,255,0.4)',
+      nodeBorder: '#2d3550',
+      nodeTextColor: '#e2e8f0',
     },
     flowchart: { htmlLabels: true, useMaxWidth: false, padding: 20, nodeSpacing: 50, rankSpacing: 60 },
   })
@@ -335,17 +344,19 @@ export default function AIProcessDiagrams() {
   const panelRef        = useRef(null)
   const nodeJustClicked = useRef(false)
 
-  // Inject hover styles once
+  // Inject hover + transparency styles once
   useEffect(() => {
     if (document.getElementById('mmd-hover-styles')) return
     const s = document.createElement('style')
     s.id = 'mmd-hover-styles'
     s.textContent = `
+      .mmd-container svg { background: transparent !important; }
+      .mmd-container svg .background { fill: transparent !important; }
       .mmd-container .node:hover > rect,
       .mmd-container .node:hover > circle,
       .mmd-container .node:hover > ellipse,
       .mmd-container .node:hover > polygon,
-      .mmd-container .node:hover > path { filter: brightness(0.88); transition: filter 0.12s; }
+      .mmd-container .node:hover > path { filter: brightness(1.3); transition: filter 0.12s; cursor: pointer; }
     `
     document.head.appendChild(s)
   }, [])
@@ -390,13 +401,14 @@ export default function AIProcessDiagrams() {
           svgEl.setAttribute('width', '100%')
           svgEl.removeAttribute('height')
           svgEl.style.display = 'block'
+          svgEl.style.background = 'transparent'
         }
         bindFunctions?.(container)
         setLoading(false)
       })
       .catch(() => {
         if (cancelled) return
-        container.innerHTML = '<p style="color:#999;font-size:14px;padding:16px 0">Could not render diagram.</p>'
+        container.innerHTML = '<p style="color:rgba(255,255,255,0.3);font-size:14px;padding:16px 0">Could not render diagram.</p>'
         setLoading(false)
       })
 
@@ -406,7 +418,6 @@ export default function AIProcessDiagrams() {
   const story = selectedNode ? STORIES[activeTab]?.[selectedNode] ?? null : null
 
   return (
-    // Full-bleed breakout from the parent's 680px centered column
     <div style={{
       width: '100vw',
       marginLeft: 'calc(50% - 50vw)',
@@ -417,49 +428,62 @@ export default function AIProcessDiagrams() {
       boxSizing: 'border-box',
     }}>
 
-      {/* Tab bar — left-aligned */}
-      <div className="flex gap-2 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
+      {/* Tab bar */}
+      <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '8px', scrollbarWidth: 'none' }}>
         {DIAGRAMS.map((d, i) => (
           <button
             key={d.label}
             onClick={() => setActiveTab(i)}
-            className={[
-              'px-4 py-2 rounded-full text-sm whitespace-nowrap font-medium transition-colors',
-              activeTab === i
-                ? 'bg-[#2C2C2C] text-white'
-                : 'bg-white text-[#2C2C2C] border border-[#2C2C2C]/20 hover:border-[#2C2C2C]/50',
-            ].join(' ')}
+            style={{
+              padding: '8px 18px',
+              borderRadius: '999px',
+              fontSize: '14px',
+              fontWeight: activeTab === i ? 600 : 500,
+              whiteSpace: 'nowrap',
+              cursor: 'pointer',
+              fontFamily: 'inherit',
+              transition: 'background 200ms ease, color 200ms ease, border-color 200ms ease',
+              ...(activeTab === i
+                ? { background: 'white', color: '#050A0F', border: '1px solid white' }
+                : { background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.6)', border: '1px solid rgba(255,255,255,0.15)' }
+              ),
+            }}
           >
             {d.label}
           </button>
         ))}
       </div>
 
-      {/* Hint — left-aligned */}
-      <p className="mt-2 mb-3 text-xs text-[#2C2C2C]/40">
+      {/* Hint */}
+      <p style={{ marginTop: '8px', marginBottom: '12px', fontSize: '12px', color: 'rgba(255,255,255,0.3)', fontFamily: "'JetBrains Mono', monospace", letterSpacing: '0.04em' }}>
         Click any node to see the full story.
       </p>
 
       {/* Main area */}
       <div
-        className="flex rounded-xl border border-[#C9A84C]/30 bg-white"
-        style={{ minHeight: '80vh', alignItems: 'flex-start' }}
+        className="liquid-glass"
+        style={{
+          display: 'flex',
+          borderRadius: '16px',
+          minHeight: '80vh',
+          alignItems: 'flex-start',
+          overflow: 'hidden',
+        }}
         onClick={() => { if (!nodeJustClicked.current) setSelectedNode(null) }}
       >
-        {/* Diagram — scrolls normally */}
+        {/* Diagram */}
         <div
-          className="relative overflow-auto p-6"
-          style={{ flex: 1, minWidth: 0 }}
+          style={{ flex: 1, minWidth: 0, position: 'relative', overflowX: 'auto', overflowY: 'auto', padding: '24px' }}
         >
           {loading && (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-sm text-[#2C2C2C]/30">rendering…</span>
+            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.25)', fontFamily: "'JetBrains Mono', monospace" }}>rendering…</span>
             </div>
           )}
           <div ref={containerRef} className="mmd-container" style={{ width: '100%' }} />
         </div>
 
-        {/* Side panel — sticky so it stays visible while diagram scrolls */}
+        {/* Side panel */}
         <div
           ref={panelRef}
           onClick={(e) => e.stopPropagation()}
@@ -467,12 +491,13 @@ export default function AIProcessDiagrams() {
             width: story ? '35%' : '0',
             flexShrink: 0,
             transition: 'width 0.2s ease',
-            borderLeft: story ? '1px solid rgba(201,168,76,0.25)' : 'none',
+            borderLeft: story ? '1px solid rgba(255,255,255,0.08)' : 'none',
             overflow: 'hidden',
             position: 'sticky',
             top: '1rem',
             alignSelf: 'flex-start',
             maxHeight: '90vh',
+            background: story ? 'rgba(15,18,30,0.6)' : 'transparent',
           }}
         >
           <div
@@ -487,7 +512,7 @@ export default function AIProcessDiagrams() {
           >
             {/* Header row */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', marginBottom: '16px' }}>
-              <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '22px', fontWeight: 700, color: '#2C2C2C', margin: 0, lineHeight: 1.2, flex: 1 }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'white', margin: 0, lineHeight: 1.2, flex: 1, letterSpacing: '-0.01em' }}>
                 {story?.title ?? ''}
               </h3>
               <button
@@ -495,25 +520,26 @@ export default function AIProcessDiagrams() {
                 style={{
                   flexShrink: 0, width: '26px', height: '26px',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  borderRadius: '50%', border: '1px solid rgba(44,44,44,0.15)',
+                  borderRadius: '50%', border: '1px solid rgba(255,255,255,0.15)',
                   background: 'transparent', cursor: 'pointer',
-                  fontSize: '15px', color: 'rgba(44,44,44,0.45)', lineHeight: 1,
+                  fontSize: '15px', color: 'rgba(255,255,255,0.35)', lineHeight: 1,
                   transition: 'border-color 0.15s, color 0.15s',
+                  fontFamily: 'inherit',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = '#2C2C2C'; e.currentTarget.style.borderColor = 'rgba(44,44,44,0.4)' }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(44,44,44,0.45)'; e.currentTarget.style.borderColor = 'rgba(44,44,44,0.15)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = 'white'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)' }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.35)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}
               >
                 ×
               </button>
             </div>
 
-            <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '14px', color: '#2C2C2C', lineHeight: 1.75, margin: '0 0 18px' }}>
+            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.75, margin: '0 0 18px' }}>
               {story?.body ?? ''}
             </p>
 
             {story?.example && (
               <div style={{ borderLeft: '2px solid #C9A84C', paddingLeft: '14px' }}>
-                <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '13px', color: 'rgba(44,44,44,0.65)', lineHeight: 1.65, margin: 0, fontStyle: 'italic' }}>
+                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.65, margin: 0, fontStyle: 'italic' }}>
                   {story.example}
                 </p>
               </div>
