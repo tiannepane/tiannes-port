@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Reveal from '../components/Reveal'
 import StarsBackground from '../components/StarsBackground'
+import Recommendations from '../components/Recommendations'
 
 const RESUME_URL = 'https://drive.google.com/file/d/1-bCT6-Xwor_Qd5wpArAqp4gdb8NOGyLJ/view?usp=drive_link'
 const VIDEO_URL  = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260330_145725_08886141-ed95-4a8e-8d6d-b75eaadce638.mp4'
@@ -313,6 +314,7 @@ export default function HomePage() {
       </section>
 
       <AboutSection />
+      <Recommendations />
     </div>
   )
 }

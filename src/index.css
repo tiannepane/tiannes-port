@@ -269,3 +269,13 @@ body {
   .project-paragraphs-home { grid-template-columns: 1fr !important; grid-row: auto !important; }
   .project-cta-home { grid-column: 1 !important; grid-row: auto !important; justify-content: flex-start !important; }
 }
+
+/* Recommendations bento */
+.rec-card { overflow: hidden; transition: background 200ms ease; }
+.rec-card .rec-readmore { opacity: 0.85; transition: opacity 200ms ease, color 200ms ease, border-color 200ms ease, background 200ms ease; }
+.rec-card:hover .rec-readmore { opacity: 1; color: #050A0F !important; background: white; border-color: white !important; }
+
+@media (max-width: 900px) {
+  .rec-grid { grid-template-columns: repeat(6, 1fr) !important; }
+  .rec-grid > * { grid-column: span 6 !important; }
+}
