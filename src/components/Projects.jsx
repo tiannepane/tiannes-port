@@ -11,6 +11,11 @@ const PROJECTS = [
     descB: "Reads gaze, hover, and dwell patterns to predict churn before it hits your funnel. Teams get a prioritized backlog from a design file, not a post-mortem.",
     href: '/intelkin',
     external: false,
+    images: [
+      '/images/intelkin-screenshot.png',
+      '/recollab.png',
+      '/recollab2.png',
+    ],
   },
   {
     name: 'Looped',
@@ -20,6 +25,15 @@ const PROJECTS = [
     descB: "V2 rebuilt from scratch after 10+ user conversations with real sellers mid-move. 1 agent drafts listings, prices from live market data, and handles the back-and-forth.",
     href: '/looped',
     external: false,
+    images: [
+      '/Screenshot 2026-04-01 164656.png',
+      '/Screenshot 2026-04-01 164706.png',
+      '/Screenshot 2026-04-01 164716.png',
+      '/Screenshot 2026-04-01 173255.png',
+      '/Screenshot 2026-04-01 173424.png',
+      '/Screenshot 2026-04-01 173434.png',
+      '/Screenshot 2026-04-01 173443.png',
+    ],
   },
   {
     name: 'AI Processes',
@@ -29,6 +43,12 @@ const PROJECTS = [
     descB: "AI summarizes interviews, Claude drafts specs, Lovable builds the prototype. Research, design, and code stop being separate stages.",
     href: '/writeups',
     external: false,
+    images: [
+      '/recollab.png',
+      '/recollab2.png',
+      '/recollab.png',
+      '/recollab2.png',
+    ],
   },
   {
     name: 'Recollab AI',
@@ -38,15 +58,11 @@ const PROJECTS = [
     descB: "Led 0 to 1 alongside ML post-docs and engineering. Drag in any file, get back a living financial model that updates itself.",
     href: '/recollab',
     external: false,
+    images: [
+      '/recollab.png',
+      '/recollab2.png',
+    ],
   },
-]
-
-const PROJECT_IMAGES = [
-  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-  'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
-  'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80',
-  'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80',
-  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80',
 ]
 
 function ProjectRow({ project }) {
@@ -164,19 +180,19 @@ function ProjectRow({ project }) {
             transition: 'animation-duration 400ms ease',
           }}
         >
-          {[...PROJECT_IMAGES, ...PROJECT_IMAGES].map((src, i) => (
+          {[...project.images, ...project.images].map((src, i) => (
             <div
               key={i}
               onClick={() => setPaused(p => !p)}
               title={paused ? 'Click to resume' : 'Click to pause'}
               style={{
                 flexShrink: 0,
-                width: '300px',
-                aspectRatio: '3 / 4',
+                width: '480px',
+                aspectRatio: '16 / 9',
                 borderRadius: '14px',
-                backgroundImage: `url(${src})`,
+                backgroundImage: `url('${src}')`,
                 backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                backgroundPosition: 'top center',
                 boxShadow: '0 24px 48px -16px rgba(0,0,0,0.6)',
                 cursor: 'pointer',
                 transition: 'transform 200ms ease',
