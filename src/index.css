@@ -270,6 +270,18 @@ body {
   .project-cta-home { grid-column: 1 !important; grid-row: auto !important; justify-content: flex-start !important; }
 }
 
+/* Projects section responsive */
+@media (max-width: 1023px) {
+  .project-grid { grid-template-columns: 1fr auto !important; }
+  .project-paragraphs { grid-column: 1 / -1 !important; grid-row: 2 !important; }
+  .project-cta { grid-column: 2 !important; grid-row: 1 !important; }
+}
+@media (max-width: 767px) {
+  .project-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .project-paragraphs { grid-template-columns: 1fr !important; grid-row: auto !important; }
+  .project-cta { grid-column: 1 !important; grid-row: auto !important; justify-content: flex-start !important; }
+}
+
 /* Recommendations bento */
 .rec-card { overflow: hidden; transition: background 200ms ease; }
 .rec-card .rec-readmore { opacity: 0.85; transition: opacity 200ms ease, color 200ms ease, border-color 200ms ease, background 200ms ease; }

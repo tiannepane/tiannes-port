@@ -3,6 +3,7 @@ import Reveal from '../components/Reveal'
 import StarsBackground from '../components/StarsBackground'
 import Recommendations from '../components/Recommendations'
 import LetsBuild from '../components/LetsBuild'
+import Projects from '../components/Projects'
 
 const RESUME_URL   = 'https://docs.google.com/document/d/1CjR82L8YtHnrzTxSwOMHau0b9mnTRYxfVPzMmqRWcSY/edit?usp=sharing'
 const LINKEDIN_URL = 'https://www.linkedin.com/in/tianne-pane/'
@@ -316,6 +317,7 @@ export default function HomePage() {
       </section>
 
       <AboutSection />
+      <Projects />
       <Recommendations />
       <LetsBuild />
     </div>
