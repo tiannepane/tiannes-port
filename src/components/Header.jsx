@@ -1,4 +1,9 @@
+import { useLocation } from 'react-router-dom'
+
 export default function Header() {
+  const { pathname } = useLocation()
+  if (pathname === '/') return null
+
   return (
     <header className="fixed top-0 right-0 z-100 p-8">
       <nav className="flex items-center gap-8">
