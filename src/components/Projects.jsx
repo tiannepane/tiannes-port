@@ -26,14 +26,12 @@ const PROJECTS = [
     href: '/looped',
     external: false,
     images: [
-      '/Screenshot 2026-04-01 173255.png',
-      '/Screenshot 2026-04-01 173424.png',
-      '/Screenshot 2026-04-01 173434.png',
-      '/Screenshot 2026-04-01 173443.png',
       'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=960&h=540&fit=crop&q=80',
       'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=960&h=540&fit=crop&q=80',
       'https://images.unsplash.com/photo-1524634126442-357e0d63dc1b?w=960&h=540&fit=crop&q=80',
       'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=960&h=540&fit=crop&q=80',
     ],
   },
   {
