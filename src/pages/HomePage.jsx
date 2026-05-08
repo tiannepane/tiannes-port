@@ -136,37 +136,6 @@ function AboutSection() {
           Built <span className="serif">different</span>.
         </Reveal>
 
-        {/* Photo */}
-        <div
-          ref={photoRef}
-          className="liquid-glass"
-          style={{
-            position: 'relative', width: '100%', borderRadius: '20px',
-            overflow: 'hidden', marginBottom: '40px',
-            maxHeight: '480px',
-            opacity: photoVisible ? 1 : 0,
-            transform: photoVisible ? 'scale(1) translateY(0)' : 'scale(0.97) translateY(24px)',
-            transition: 'opacity 1000ms ease-out, transform 1000ms ease-out',
-          }}
-        >
-          <img
-            src="/assets/about-photo.png"
-            alt="Tianne building with a team"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-          <div style={{
-            position: 'absolute', left: 0, right: 0, bottom: 0, height: '128px',
-            background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
-            pointerEvents: 'none',
-          }} />
-          <p className="mono" style={{
-            position: 'absolute', left: '16px', bottom: '16px', margin: 0,
-            fontSize: '11px', color: 'rgba(255,255,255,0.55)',
-            letterSpacing: '0.2em', textTransform: 'uppercase',
-          }}>
-            Lovable Event with Airess, Toronto 2026
-          </p>
-        </div>
 
         {/* Always-visible bio */}
         <Reveal delay={0.3} style={{ display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'left', marginBottom: '24px' }}>
@@ -283,7 +252,6 @@ export default function HomePage() {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px' }}>
-              <img src="/assets/tianne.png" alt="Tianne Pane" style={{ width: '36px', height: '36px', borderRadius: '999px', objectFit: 'cover' }} />
               <span style={{ color: 'white', fontSize: '14px', fontWeight: 500 }}>Tianne Pane</span>
             </div>
             {[

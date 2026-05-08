@@ -91,11 +91,6 @@ function LetsBuildSection() {
               position: 'relative', zIndex: 1,
             }}
           >
-            <img
-              src="/assets/tianne.png"
-              alt="Tianne Pane"
-              style={{ width: '40px', height: '40px', borderRadius: '999px', objectFit: 'cover' }}
-            />
             Start a conversation
           </a>
         </div>

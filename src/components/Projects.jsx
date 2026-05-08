@@ -26,13 +26,14 @@ const PROJECTS = [
     href: '/looped',
     external: false,
     images: [
-      '/Screenshot 2026-04-01 164656.png',
-      '/Screenshot 2026-04-01 164706.png',
-      '/Screenshot 2026-04-01 164716.png',
       '/Screenshot 2026-04-01 173255.png',
       '/Screenshot 2026-04-01 173424.png',
       '/Screenshot 2026-04-01 173434.png',
       '/Screenshot 2026-04-01 173443.png',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1524634126442-357e0d63dc1b?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=960&h=540&fit=crop&q=80',
     ],
   },
   {
@@ -44,10 +45,10 @@ const PROJECTS = [
     href: '/writeups',
     external: false,
     images: [
-      '/recollab.png',
-      '/recollab2.png',
-      '/recollab.png',
-      '/recollab2.png',
+      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=960&h=540&fit=crop&q=80',
     ],
   },
   {
@@ -59,8 +60,10 @@ const PROJECTS = [
     href: '/recollab',
     external: false,
     images: [
-      '/recollab.png',
-      '/recollab2.png',
+      'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=960&h=540&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=960&h=540&fit=crop&q=80',
     ],
   },
 ]
