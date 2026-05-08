@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import Reveal from '../components/Reveal'
 import StarsBackground from '../components/StarsBackground'
 import Recommendations from '../components/Recommendations'
+import LetsBuild from '../components/LetsBuild'
 
-const RESUME_URL = 'https://drive.google.com/file/d/1-bCT6-Xwor_Qd5wpArAqp4gdb8NOGyLJ/view?usp=drive_link'
+const RESUME_URL   = 'https://docs.google.com/document/d/1CjR82L8YtHnrzTxSwOMHau0b9mnTRYxfVPzMmqRWcSY/edit?usp=sharing'
+const LINKEDIN_URL = 'https://www.linkedin.com/in/tianne-pane/'
 const VIDEO_URL  = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260330_145725_08886141-ed95-4a8e-8d6d-b75eaadce638.mp4'
 
 function useVideoFade(videoRef) {
@@ -288,7 +290,7 @@ export default function HomePage() {
               ['Based in',           'Toronto, ON'],
               ['Open to',            'Product roles'],
               ['Resume',   <a key="r"  href={RESUME_URL} target="_blank" rel="noreferrer" className="link-underline" style={{ color: 'white' }}>View →</a>],
-              ['LinkedIn', <a key="li" href="https://www.linkedin.com/in/tianne-pane" target="_blank" rel="noreferrer" className="link-underline" style={{ color: 'white' }}>Connect →</a>],
+              ['LinkedIn', <a key="li" href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="link-underline" style={{ color: 'white' }}>Connect →</a>],
             ].map(([label, value], i) => (
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '12px', width: '100%' }}>
                 <span style={{ color: 'rgba(255,255,255,0.4)' }}>{label}</span>
@@ -315,6 +317,7 @@ export default function HomePage() {
 
       <AboutSection />
       <Recommendations />
+      <LetsBuild />
     </div>
   )
 }

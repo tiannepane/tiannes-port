@@ -9,7 +9,7 @@ export default function Header() {
       <nav className="flex items-center gap-8">
         <a href="/#projects" className="nav-link">Work</a>
         <a
-          href="https://drive.google.com/file/d/1-bCT6-Xwor_Qd5wpArAqp4gdb8NOGyLJ/view?usp=drive_link"
+          href="https://docs.google.com/document/d/1CjR82L8YtHnrzTxSwOMHau0b9mnTRYxfVPzMmqRWcSY/edit?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="nav-link"
