@@ -310,7 +310,7 @@ async function getMermaid() {
     securityLevel: 'loose',
     themeVariables: {
       fontSize: '13px',
-      background: '#050A0F',
+      background: '#000',
       mainBkg: '#151b2e',
       primaryColor: '#151b2e',
       primaryBorderColor: '#2d3550',
@@ -318,7 +318,7 @@ async function getMermaid() {
       lineColor: '#4a5568',
       secondaryColor: '#1a2035',
       tertiaryColor: '#0d1117',
-      edgeLabelBackground: '#050A0F',
+      edgeLabelBackground: '#000',
       clusterBkg: 'rgba(255,255,255,0.03)',
       clusterBorder: '#2a2f4a',
       titleColor: 'rgba(255,255,255,0.4)',

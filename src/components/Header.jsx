@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom'
 
-const DARK_PAGES = ['/writeups']
+const DARK_PAGES = ['/writeups', '/intelkin', '/looped', '/recollab']
 
 export default function Header() {
   const { pathname } = useLocation()

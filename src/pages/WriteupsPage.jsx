@@ -41,7 +41,7 @@ export default function WriteupsPage() {
   }, [])
 
   return (
-    <div style={{ minHeight: '100vh', background: '#050A0F', color: 'white', fontFamily: "'PP Neue Montreal', ui-sans-serif, system-ui, sans-serif" }}>
+    <div style={{ minHeight: '100vh', background: '#000', color: 'white', fontFamily: "'PP Neue Montreal', ui-sans-serif, system-ui, sans-serif" }}>
 
       {/* Back link */}
       <Link
@@ -91,7 +91,6 @@ export default function WriteupsPage() {
             }}
           >
             Building with AI
-            <div style={{ position: 'absolute', bottom: 0, left: '20px', right: '20px', height: '2px', background: 'rgba(255,255,255,0.5)' }} />
           </div>
         </div>
       </div>
