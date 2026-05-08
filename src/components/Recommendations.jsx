@@ -290,7 +290,7 @@ export default function Recommendations() {
   return (
     <section
       id="testimonials"
-      style={{ position: 'relative', overflow: 'visible', padding: '96px 24px', background: '#050A0F' }}
+      style={{ position: 'relative', overflow: 'visible', padding: '96px 24px', background: '#000' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px', flexWrap: 'wrap', marginBottom: '40px' }}>
