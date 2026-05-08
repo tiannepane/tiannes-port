@@ -36,8 +36,8 @@ const PROJECTS = [
     headline: 'the financial operating system for property managers, live and in active use',
     descA: "Founding PM. Live product. 1 data model replacing static PDFs across real property portfolios.",
     descB: "Led 0 to 1 alongside ML post-docs and engineering. Drag in any file, get back a living financial model that updates itself.",
-    href: 'https://recostudy-investor-hub.vercel.app/',
-    external: true,
+    href: '/recollab',
+    external: false,
   },
 ]
 
