@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Reveal from '../components/Reveal'
+import StarsBackground from '../components/StarsBackground'
 
 const RESUME_URL = 'https://drive.google.com/file/d/1-bCT6-Xwor_Qd5wpArAqp4gdb8NOGyLJ/view?usp=drive_link'
 const VIDEO_URL  = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260330_145725_08886141-ed95-4a8e-8d6d-b75eaadce638.mp4'
@@ -91,6 +92,138 @@ function BottomNav() {
   )
 }
 
+function AboutSection() {
+  const [expanded, setExpanded] = useState(false)
+  const photoRef = useRef(null)
+
+  useEffect(() => {
+    const el = photoRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'translateY(0)' } },
+      { threshold: 0.2 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  return (
+    <section
+      style={{
+        position: 'relative', overflow: 'hidden',
+        background: '#050A0F', padding: '120px 24px 100px',
+      }}
+    >
+      <StarsBackground factor={0.05} speed={50} color="#ffffff" />
+
+      {/* radial vignette */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+        background: 'radial-gradient(ellipse at center, transparent 40%, #050A0F 80%)',
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: '1024px', margin: '0 auto' }}>
+
+        <Reveal delay={0.05}>
+          <span className="mono" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+            About
+          </span>
+        </Reveal>
+
+        <Reveal delay={0.1} as="h2" style={{ margin: '16px 0 48px', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+          Built <span className="serif" style={{ fontStyle: 'italic' }}>different.</span>
+        </Reveal>
+
+        <div style={{ display: 'flex', gap: '60px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+
+          {/* Photo */}
+          <div style={{ flexShrink: 0 }}>
+            <div
+              ref={photoRef}
+              className="liquid-glass"
+              style={{
+                borderRadius: '20px', overflow: 'hidden', width: '260px',
+                opacity: 0, transform: 'translateY(24px)',
+                transition: 'opacity 0.8s ease, transform 0.8s ease',
+              }}
+            >
+              <img
+                src="/assets/about-photo.png"
+                alt="Tianne Pane"
+                style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+              />
+              <div style={{ padding: '12px 16px' }}>
+                <span className="mono" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em' }}>
+                  Lovable Event with Airess, Toronto 2026
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Bio */}
+          <div style={{ flex: 1, minWidth: '280px' }}>
+            <Reveal delay={0.15}>
+              <p style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 500, lineHeight: 1.3, margin: '0 0 24px', letterSpacing: '-0.02em' }}>
+                Hello, I'm Tianne.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.2}>
+              <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 16px' }}>
+                Product Manager based out of Toronto. Born in Indonesia, raised in Qatar. Third culture kid who learned early that context shapes everything — and that the best products are the ones built for the edges, not the average.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.25}>
+              <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 20px' }}>
+                I sit at the intersection of product strategy, AI, and design. I move fast, think in systems, and care deeply about the people on the other end of the screen.
+              </p>
+            </Reveal>
+
+            {expanded && (
+              <div style={{ overflow: 'hidden' }}>
+                <Reveal delay={0.05}>
+                  <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 16px' }}>
+                    I was the recipient of the Pearson Canada Scholarship — one of 20 students selected nationally for academic achievement and community leadership. I went on to study Business Technology Management at Toronto Metropolitan University.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.1}>
+                  <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 16px' }}>
+                    Before going independent, I led product at{' '}
+                    <a href="https://kabriinnovations.com" target="_blank" rel="noreferrer" style={{ color: 'white', textDecoration: 'underline', textDecorationColor: 'rgba(255,255,255,0.3)' }}>
+                      Kabri Innovations
+                    </a>
+                    , where I shipped B2B SaaS products and learned how to navigate ambiguity with a small team and real stakes.
+                  </p>
+                </Reveal>
+                <Reveal delay={0.15}>
+                  <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: '0 0 20px' }}>
+                    Outside of work: basketball, reading (currently deep in systems thinking), and building things that shouldn't exist yet. Looking for the right team to build with.
+                  </p>
+                </Reveal>
+              </div>
+            )}
+
+            <Reveal delay={0.3}>
+              <button
+                onClick={() => setExpanded(e => !e)}
+                style={{
+                  background: 'none', border: 'none', padding: 0, cursor: 'pointer',
+                  fontSize: '14px', color: 'rgba(255,255,255,0.5)',
+                  fontFamily: 'inherit', letterSpacing: '0.02em',
+                }}
+              >
+                {expanded ? 'Show less ↑' : 'Read more ↓'}
+              </button>
+            </Reveal>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function HomePage() {
   const videoRef = useRef(null)
   useVideoFade(videoRef)
@@ -178,6 +311,8 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
+
+      <AboutSection />
     </div>
   )
 }
